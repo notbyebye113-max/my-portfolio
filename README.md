@@ -343,3 +343,220 @@ fetch('https://raw.githubusercontent.com/USERNAME/REPO/main/data/bookings.json')
 หมายเหตุ: ถ้าเปลี่ยนไฟล์ JSON ใน repo ต้อง commit และ GitHub Pages จะอัปเดต
 */
 </script>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Save The Memory — Portfolio & Booking</title>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body{font-family: 'Prompt', sans-serif;}
+    .portfolio-img{width:100%;height:18rem;object-fit:cover;background:#f5f5f5;}
+    #lightbox{backdrop-filter: blur(4px);}
+    .disabled-day{opacity:0.4; pointer-events:none;}
+  </style>
+</head>
+<body class="bg-stone-50 text-gray-800">
+
+  <nav class="fixed top-0 w-full z-50 bg-white/90 py-4 px-6 shadow">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="#" class="text-lg font-bold">SAVE THE MEMORY</a>
+      <div class="hidden md:flex gap-6">
+        <a href="#portfolio">ผลงาน</a>
+        <a href="#contact" class="px-3 py-1 bg-yellow-500 text-white rounded-md">จองคิว</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="pt-28 pb-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-2xl font-bold mb-4">ผลงานที่ผ่านมา</h2>
+      <p class="text-gray-600 mb-6">คลิกที่รูปเพื่อดูภาพใหญ่ และกด "จองวันที่นี้" เพื่อจอง</p>
+
+      <!-- Gallery: เปลี่ยนลิงก์รูปเป็นของน๊อต (raw.githubusercontent หรือโฮสต์อื่น) -->
+      <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- ตัวอย่างรูป — เปลี่ยน src ให้ตรงกับไฟล์ที่อัพไว้ใน repo -->
+        <div class="overflow-hidden rounded-xl shadow">
+          <img src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/A7400001.jpg"
+               class="portfolio-img cursor-pointer"
+               alt="portfolio"
+               data-title="งานพิธี A"
+               data-desc="รายละเอียดสั้น ๆ ของงานนี้"
+               onclick="openLightbox(this)">
+        </div>
+
+        <div class="overflow-hidden rounded-xl shadow">
+          <img src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/A7409308.jpg"
+               class="portfolio-img cursor-pointer"
+               alt="portfolio"
+               data-title="งานพิธี B"
+               data-desc="รายละเอียดสั้น ๆ ของงานนี้"
+               onclick="openLightbox(this)">
+        </div>
+
+        <!-- เพิ่ม <div> รูปตามที่ต้องการ โดยแก้ src -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4">
+    <div class="bg-white rounded-lg max-w-4xl w-full p-4">
+      <div class="flex justify-between items-start">
+        <div>
+          <h3 id="lbTitle" class="text-xl font-bold"></h3>
+          <p id="lbDesc" class="text-gray-600 text-sm"></p>
+        </div>
+        <div>
+          <button class="text-gray-500" onclick="closeLightbox()">✕</button>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <img id="lbImg" src="" alt="" class="w-full h-[480px] object-contain bg-gray-100 rounded">
+      </div>
+
+      <div class="mt-4 flex items-center justify-between">
+        <div>
+          <label class="text-sm text-gray-600">เลือกวันที่จะจอง (YYYY-MM-DD):</label>
+          <input id="bookDate" type="date" class="ml-2 p-2 border rounded" />
+        </div>
+        <div class="flex gap-2">
+          <button onclick="openQuickBook()" class="px-4 py-2 bg-brand-gold text-white rounded" style="background:#C5A059">จองวันที่นี้</button>
+          <button onclick="closeLightbox()" class="px-4 py-2 border rounded">ปิด</button>
+        </div>
+      </div>
+      <p id="lbNote" class="text-sm text-gray-500 mt-2"></p>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 hidden bg-black text-white px-4 py-2 rounded"></div>
+
+  <!-- Contact placeholder -->
+  <section id="contact" class="py-12">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="bg-white p-6 rounded-lg shadow text-center">
+        <h3 class="text-xl font-bold mb-3">ติดต่อเรา</h3>
+        <p class="text-gray-600">LINE: savethememory7 • โทร: 063-028-8737</p>
+      </div>
+    </div>
+  </section>
+
+<script>
+/* ====== ตั้งค่านี้ก่อนใช้งาน ======
+   - API_URL: เอา Web App URL จากขั้นตอน deploy Apps Script (doGet/doPost)
+   - ถ้าอยากให้คนจองต้องกรอกชื่อ/เบอร์ใน modal ให้แก้ฟังก์ชัน openQuickBook ให้เรียกฟอร์มเพิ่มเติม
+*/
+const API_URL = 'REPLACE_WITH_YOUR_APPS_SCRIPT_WEBAPP_URL'; // <-- ใส่ตรงนี้
+
+// helpers
+function showToast(msg, timeout=3000){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.remove('hidden');
+  setTimeout(()=> t.classList.add('hidden'), timeout);
+}
+
+// open lightbox from clicked <img>
+function openLightbox(imgEl){
+  const src = imgEl.src;
+  const title = imgEl.dataset.title || 'Photo';
+  const desc = imgEl.dataset.desc || '';
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lbTitle').textContent = title;
+  document.getElementById('lbDesc').textContent = desc;
+  document.getElementById('bookDate').value = ''; // reset
+  document.getElementById('lbNote').textContent = '';
+  document.getElementById('lightbox').classList.remove('hidden');
+
+  // optionally pre-fill date (none here)
+}
+
+// close
+function closeLightbox(){ document.getElementById('lightbox').classList.add('hidden'); }
+
+// fetch bookings (GET)
+async function fetchBookings(){
+  try{
+    const r = await fetch(API_URL);
+    if(!r.ok) throw new Error('fetch fail');
+    const arr = await r.json();
+    return arr; // array of row objects (date,name,...)
+  } catch(e){
+    console.error(e);
+    return [];
+  }
+}
+
+// post booking (POST)
+async function postBooking(payload){
+  try{
+    const r = await fetch(API_URL, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    const j = await r.json();
+    return j;
+  } catch(e){
+    console.error(e);
+    return {ok:false, error:e.message};
+  }
+}
+
+// quick book (from lightbox)
+async function openQuickBook(){
+  const dateInput = document.getElementById('bookDate').value;
+  if(!dateInput){
+    return alert('เลือกวันที่ก่อน');
+  }
+  const name = prompt('กรอกชื่อผู้จอง (จำเป็น)');
+  if(!name) return alert('ต้องกรอกชื่อ');
+  const phone = prompt('กรอกเบอร์ (ถ้ามี)');
+  // ตรวจสอบคิวก่อนโพส (fetch bookings)
+  const bookings = await fetchBookings();
+  const taken = bookings.filter(b => b.date === dateInput && (b.status||'').toLowerCase() === 'booked');
+  if(taken.length>0){
+    if(!confirm('วันที่นี้มีคนจองแล้ว ต้องการจองทับหรือไม่?')) return;
+  }
+  // ส่ง POST
+  showToast('กำลังจอง...');
+  const res = await postBooking({ date: dateInput, name: name, phone: phone||'', email:'', notes:`จองจากหน้าเว็บ - รูป: ${document.getElementById('lbTitle').textContent}` });
+  if(res && res.ok){
+    showToast('จองเรียบร้อยแล้ว 🎉', 4000);
+    closeLightbox();
+  } else {
+    showToast('จองไม่สำเร็จ: '+(res.error || 'unknown'));
+  }
+}
+
+/* --- ปรับปรุง UI เพิ่ม: ทำให้วันที่มีคิวแสดงเป็น disabled ใน date picker --- */
+async function markBookedDatesInPicker(){
+  const bookings = await fetchBookings();
+  const dateSet = new Set(bookings.filter(b=> (b.status||'').toLowerCase()==='booked').map(b=>b.date));
+  const dp = document.getElementById('bookDate');
+  // ไม่มีวิธี standard ปิดวันที่ใน native date input -> แสดงโน้ตด้านล่างแทน
+  const bookedList = Array.from(dateSet).slice(0,30).join(', ');
+  if(bookedList){
+    document.getElementById('lbNote').textContent = 'วันที่ที่มีคิวแล้ว (ตัวอย่าง): ' + bookedList;
+  } else {
+    document.getElementById('lbNote').textContent = '';
+  }
+}
+
+// initial
+(async function init(){
+  // ตรวจสอบ API_URL ความถูกต้องคร่าว ๆ
+  if(API_URL.includes('REPLACE_WITH')){
+    console.warn('ยังไม่ได้ตั้งค่า API_URL ใน index.html — ใส่ Web App URL จาก Apps Script');
+  } else {
+    await markBookedDatesInPicker();
+  }
+})();
+</script>
+
+</body>
+</html>
