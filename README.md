@@ -103,85 +103,76 @@
         <p class="text-gray-600">ตัวอย่างภาพจากงานพิธีต่าง ๆ — หากไฟล์รูปอยู่ในโฟลเดอร์เดียวกับไฟล์นี้ รูปจะแสดงขึ้น</p>
       </div>
 
-      <!-- Gallery grid: ใช้ลิงก์ raw.githubusercontent.com แบบเต็ม -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
-        <div class="overflow-hidden rounded-xl shadow">
-          <img
-            src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/A7409308.jpg"
-            alt="portfolio"
-            class="portfolio-img"
-            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200'">
-        </div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal">
 
-        <div class="overflow-hidden rounded-xl shadow">
-          <img
-            src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/DSC07259.jpg"
-            alt="portfolio"
-            class="portfolio-img"
-            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1200'">
-        </div>
+  <div class="overflow-hidden rounded-xl shadow">
+    <img src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/A7400001.jpg"
+         alt="portfolio" class="portfolio-img"
+         onerror="this.src='https://images.unsplash.com/photo-1548545811-92523297a7da?q=80&w=1200'">
+  </div>
 
-        <div class="overflow-hidden rounded-xl shadow">
-          <img
-            src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/DSC07277.jpg"
-            alt="portfolio"
-            class="portfolio-img"
-            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=1200'">
-        </div>
+  <div class="overflow-hidden rounded-xl shadow">
+    <img src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/A7409308.jpg"
+         alt="portfolio" class="portfolio-img"
+         onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200'">
+  </div>
 
-        <div class="overflow-hidden rounded-xl shadow">
-          <img
-            src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/IMG_8708.jpg"
-            alt="portfolio"
-            class="portfolio-img"
-            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=1200'">
-        </div>
+  <div class="overflow-hidden rounded-xl shadow">
+    <img src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/A7409325.jpg"
+         alt="portfolio" class="portfolio-img"
+         onerror="this.src='https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=1200'">
+  </div>
 
-        <div class="overflow-hidden rounded-xl shadow">
-          <img
-            src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/IMG_8897.jpg"
-            alt="portfolio"
-            class="portfolio-img"
-            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1623167198303-3453b3b64415?q=80&w=1200'">
-        </div>
+  <div class="overflow-hidden rounded-xl shadow">
+    <img src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/A7409977.jpg"
+         alt="portfolio" class="portfolio-img"
+         onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200'">
+  </div>
 
-        <div class="overflow-hidden rounded-xl shadow">
-          <img
-            src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/A7400001.jpg"
-            alt="portfolio"
-            class="portfolio-img"
-            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1548545811-92523297a7da?q=80&w=1200'">
-        </div>
+  <div class="overflow-hidden rounded-xl shadow">
+    <img src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/DSC06869.jpg"
+         alt="portfolio" class="portfolio-img"
+         onerror="this.src='https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1200'">
+  </div>
 
-        <div class="overflow-hidden rounded-xl shadow">
-          <img
-            src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/A7409325.jpg"
-            alt="portfolio"
-            class="portfolio-img"
-            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=1200'">
-        </div>
+  <div class="overflow-hidden rounded-xl shadow">
+    <img src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/DSC06887.jpg"
+         alt="portfolio" class="portfolio-img"
+         onerror="this.src='https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=1200'">
+  </div>
 
-        <div class="overflow-hidden rounded-xl shadow">
-          <img
-            src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/A7409977.jpg"
-            alt="portfolio"
-            class="portfolio-img"
-            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200'">
-        </div>
+  <div class="overflow-hidden rounded-xl shadow">
+    <img src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/DSC07259.jpg"
+         alt="portfolio" class="portfolio-img"
+         onerror="this.src='https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1200'">
+  </div>
 
-        <div class="overflow-hidden rounded-xl shadow">
-          <img
-            src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/DSC06869.jpg"
-            alt="portfolio"
-            class="portfolio-img"
-            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=1200'">
-        </div>
-      </div>
+  <div class="overflow-hidden rounded-xl shadow">
+    <img src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/DSC07277.jpg"
+         alt="portfolio" class="portfolio-img"
+         onerror="this.src='https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=1200'">
+  </div>
 
-      <div class="text-center mt-8 reveal">
-        <a href="#contact" class="inline-block px-6 py-3 bg-brand-gold text-white rounded-full">ต้องการดูเพิ่มเติม / จองคิว</a>
-      </div>
-    </div>
+  <div class="overflow-hidden rounded-xl shadow">
+    <img src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/IMG_8711.jpg"
+         alt="portfolio" class="portfolio-img"
+         onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200'">
+  </div>
+
+  <div class="overflow-hidden rounded-xl shadow">
+    <img src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/IMG_8723.jpg"
+         alt="portfolio" class="portfolio-img"
+         onerror="this.src='https://images.unsplash.com/photo-1623167198303-3453b3b64415?q=80&w=1200'">
+  </div>
+
+  <div class="overflow-hidden rounded-xl shadow">
+    <img src="https://raw.githubusercontent.com/notbyebye113-max/my-portfolio/main/IMG_8813.jpg"
+         alt="portfolio" class="portfolio-img"
+         onerror="this.src='https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=1200'">
+  </div>
+
+</div>
+
   </section>
 
   <!-- ... ส่วนที่เหลือเหมือนเดิม ... -->
